@@ -19,4 +19,22 @@ export default class CountApiService {
             return err;
         }
     }
+
+    async updateCount(amount) {
+        try {
+            const requestOptions = {
+                method: 'GET',
+            }
+            const response = await fetch(`${this.url}/update/${this.key}?amount=${amount}`, requestOptions);
+            const data = await response.json();
+            if (data.error) {
+                console.log(data.error);
+                return null
+            }
+            return data;
+        } catch (err) {
+            console.log(err);
+            return err;
+        }
+    }
 }

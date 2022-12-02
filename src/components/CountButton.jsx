@@ -12,7 +12,7 @@ function CountButton() {
     }, [setCount]);
 
     const onCountButtonClick = useCallback(() => {
-        countService.getCount().then((result) => {
+        countService.updateCount(1).then((result) => {
             setCount(result.value);
         })
     }, [setCount]);
