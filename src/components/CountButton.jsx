@@ -1,9 +1,11 @@
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useContext, useEffect, useState } from 'react';
 import CountApiService from '../services/countApiService';
+import { CountContext } from '../App';
+import "./CountButton.css";
 
 function CountButton() {
     const countService = new CountApiService();
-    const [count, setCount] = useState(0);
+    const { count, setCount } = useContext(CountContext);
     const [buttonDisabled, setButtonDisabled] = useState(true);
 
     useEffect(() => {
@@ -22,7 +24,7 @@ function CountButton() {
     }, [setCount]);
 
     return (
-        <button disabled={buttonDisabled} className="count-button" onClick={onCountButtonClick}>{count}</button>
+        <button disabled={buttonDisabled} className="count-button" onClick={onCountButtonClick}>Hit Count</button>
     )
 }
 
